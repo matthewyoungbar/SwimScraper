@@ -1,7 +1,5 @@
 requests
-csv
 bs4
 pandas
 selenium
-time
 webdriver_manager
