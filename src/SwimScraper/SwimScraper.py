@@ -499,14 +499,14 @@ def getTeamMeetList(team_name = '', team_ID = -1, season_ID = -1, year = -1):
 	elif(team_ID != -1):
 		team_number = team_ID
 
-	if(season_ID != -1):
-		year = getYear(season_ID)
+	if(year != -1):
+		season_ID = getSeasonID(year)
 
 	#if no season_ID or year is specified, return the roster for the most current season - might change later
 	if(season_ID == -1 and year == -1):
 		year = 2021
 
-	team_url = 'https://www.swimcloud.com/team/' + str(team_number) +  '/results/?page=1&name=&meettype=&year=' + str(year)
+	team_url = 'https://www.swimcloud.com/team/' + str(team_number) +  '/results/?page=1&name=&meettype=&season=' + str(season_ID)
 
 	url = requests.get(team_url, headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36', 'Referer' : 'https://google.com/'})
 
