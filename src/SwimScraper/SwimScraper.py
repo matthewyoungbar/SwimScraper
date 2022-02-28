@@ -630,7 +630,7 @@ def getCollegeMeetResults(meet_ID, event_name, gender, event_ID = -1, event_href
 	for group in event_groups:
 		group_label = group.find('caption', attrs = {'class' : 'c-table-clean__caption'}).text.strip()
 
-		times_list = soup.find('div', attrs = {'class' : 'c-table-clean--responsive'}).find('tbody').find_all('tr')
+		times_list = group.find('div', attrs = {'class' : 'c-table-clean--responsive'}).find('tbody').find_all('tr')
 
 		for time in times_list:
 			if 'Relay' not in full_event_name:
@@ -645,7 +645,7 @@ def getCollegeMeetResults(meet_ID, event_name, gender, event_ID = -1, event_href
 				swim_time = data[3].text.strip()
 				if 'Diving' in full_event_name:
 					swim_time = data[4].text.strip()
-				
+
 				score = data[5].text.strip()
 				# there is no 'imp' column for diving events:
 				if len(data) >= 8:
